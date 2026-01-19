@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マイカー状態 - 自動車状態監視サービス</title>
+  <link rel="stylesheet" href="css/user-page.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .user-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .user-header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .logout-btn {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .vehicle-illustration {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem 0;
+    }
+
+    .car-svg {
+      width: 300px;
+      height: 200px;
+    }
+
+    .car-part {
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .car-part:hover {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body class="user-page">
+  <header class="user-header">
+    <h1>マイカー状態</h1>
+    <button class="logout-btn" onclick="showAlert('ログアウトしました', 'info')">ログアウト</button>
+  </header>
+
+  <div class="container">
+    <!-- 車両名 -->
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <h2 id="vehicleName" style="font-size: 2rem; color: #333;">-</h2>
+    </div>
+
+    <!-- 健康スコアメーター -->
+    <div class="table-container">
+      <h2 style="text-align: center;">健康スコア</h2>
+      <div class="meter-container">
+        <canvas id="scoreMeter" width="300" height="300"></canvas>
+      </div>
+      <div style="text-align: center; font-size: 1.5rem; margin-top: 1rem;">
+        <span id="scoreValue" style="font-weight: bold; color: #10b981;">-</span> 点
+      </div>
+    </div>
+
+    <!-- 車両イラスト -->
+    <div class="table-container">
+      <h2 style="text-align: center;">各部品の状態</h2>
+      <div class="vehicle-illustration" id="vehicleIllustration">
+        <!-- SVGはJavaScriptで動的に生成 -->
+      </div>
+    </div>
+
+    <!-- 異常検知通知欄 -->
+    <div class="table-container">
+      <h2>異常検知通知</h2>
+      <ul class="alert-list" id="alertList">
+      </ul>
+    </div>
+
+    <!-- アクションボタン -->
+    <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+      <button class="btn btn-primary" onclick="goToDetail()">詳細を見る</button>
+      <button class="btn btn-secondary" onclick="bookMaintenance()">整備予約</button>
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/user-home.js"></script>
+</body>
+</html>
+

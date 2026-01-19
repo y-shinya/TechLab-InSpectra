@@ -1,0 +1,16 @@
+{
+  "id":"CAR001",
+  "customerId":"CUST001",
+  "customerName":"山田 太郎",
+  "name":"Prius",
+  "distance":42000,
+  "lastCheck":"2025-10-30",
+  "parts":{"engine":"normal","brake":"warning","battery":"error","tire":"normal","aircon":"normal"},
+  "riskHistory":[40,45,50,55,65,70,75],
+  "maintenance":[
+    {"date":"2025-09-01","task":"オイル交換","status":"完了"},
+    {"date":"2025-10-10","task":"ブレーキ点検","status":"要再検"},
+    {"date":"2025-10-30","task":"バッテリー診断","status":"要対応"}
+  ]
+}
+

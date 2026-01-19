@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InSpectra - 管理ダッシュボード</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- サイドバー -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <i class="fas fa-car-crash"></i>
+        <span>InSpectra</span>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="#" class="nav-link active"><i class="fas fa-chart-line"></i><span>ダッシュボード</span></a></li>
+        <li><a href="#" class="nav-link"><i class="fas fa-list"></i><span>整備リスト</span></a></li>
+        <li><a href="#" class="nav-link"><i class="fas fa-bell"></i><span>アラート</span></a></li>
+        <li><a href="#" class="nav-link"><i class="fas fa-cog"></i><span>設定</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="#" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>ログアウト</span></a>
+    </div>
+  </aside>
+
+  <!-- メインコンテンツ -->
+  <div class="main-wrapper">
+    <!-- ヘッダー -->
+    <header class="header">
+      <div class="header-left">
+        <button class="sidebar-toggle-mobile" id="sidebarToggleMobile">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="breadcrumb">
+          <span><i class="fas fa-home"></i> ホーム</span>
+          <span class="separator">/</span>
+          <span>ダッシュボード</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="検索...">
+        </div>
+
+        <div class="notification-bell">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge" id="notificationCount">3</span>
+        </div>
+
+        <div class="user-profile">
+          <img src="img/admin.png" alt="User">
+          <div class="profile-info">
+            <span class="profile-name">管理者</span>
+            <span class="profile-role">システム管理者</span>
+          </div>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- ページタイトル -->
+      <div class="page-header">
+        <h1>管理ダッシュボード</h1>
+        <div class="page-actions">
+          <button class="btn btn-primary"><i class="fas fa-sync"></i> 更新</button>
+        </div>
+      </div>
+
+      <!-- サマリー情報 -->
+      <div class="summary-bar">
+        <span class="last-update"><i class="fas fa-clock"></i> 最終更新: <span id="lastUpdateTime">2024/01/15 14:30</span></span>
+        <span class="summary-status">システムステータス: <span class="status-ok"><i class="fas fa-check-circle"></i> 正常</span></span>
+      </div>
+
+      <!-- KPIカードエリア -->
+      <div class="kpi-grid">
+        <div class="kpi-card warning">
+          <div class="kpi-header">
+            <h3>注意車両数</h3>
+            <span class="kpi-trend down"><i class="fas fa-arrow-down"></i> 2.1%</span>
+          </div>
+          <div class="value" id="warningVehicles">-</div>
+          <div class="kpi-footer">前月比: <span class="trend-text">-1</span></div>
+        </div>
+
+        <div class="kpi-card error">
+          <div class="kpi-header">
+            <h3>緊急対応必要</h3>
+            <span class="kpi-trend up"><i class="fas fa-arrow-up"></i> 8.3%</span>
+          </div>
+          <div class="value" id="errorVehicles">-</div>
+          <div class="kpi-footer">前月比: <span class="trend-text">+2</span></div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <h3>検査ゲート稼働数</h3>
+            <span class="kpi-trend neutral"><i class="fas fa-minus-circle"></i> 0%</span>
+          </div>
+          <div class="value">3/5</div>
+          <div class="kpi-footer">稼働率: <span class="trend-text">60%</span></div>
+        </div>
+      </div>
+
+      <!-- テーブルコンテナ -->
+      <div class="table-container">
+        <div class="table-header">
+          <div>
+            <h2><i class="fas fa-list-check"></i> 整備優先度リスト</h2>
+            <p class="text-muted">リスクスコアの高い順に表示</p>
+          </div>
+          <div class="table-controls">
+            <div class="search-input">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="顧客ID、車両ID、車種で検索..." id="tableSearchInput">
+            </div>
+            <div class="filter-group">
+              <select class="filter-select" id="statusFilter">
+                <option value="">すべてのステータス</option>
+                <option value="normal">正常</option>
+                <option value="warning">注意</option>
+                <option value="error">異常</option>
+              </select>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="exportBtn"><i class="fas fa-download"></i> エクスポート</button>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table id="priorityTable">
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="selectAll"></th>
+                <th>顧客ID <i class="fas fa-sort"></i></th>
+                <th>車両ID <i class="fas fa-sort"></i></th>
+                <th>車種 <i class="fas fa-sort"></i></th>
+                <th>リスクスコア <i class="fas fa-sort"></i></th>
+                <th>ステータス <i class="fas fa-sort"></i></th>
+                <th>最終検査日 <i class="fas fa-sort"></i></th>
+                <th>アクション</th>
+              </tr>
+            </thead>
+            <tbody id="priorityTableBody">
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-footer">
+          <div class="pagination">
+            <button class="btn-page" disabled><i class="fas fa-chevron-left"></i></button>
+            <span class="page-info">ページ <span id="currentPage">1</span> / <span id="totalPages">5</span></span>
+            <button class="btn-page"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <span class="result-count">全 <span id="totalCount">50</span> 件中 <span id="pageCount">10</span> 件を表示</span>
+        </div>
+      </div>
+
+      <!-- グラフ -->
+      <div class="charts-grid">
+        <div class="chart-container">
+          <div class="chart-header">
+            <h2><i class="fas fa-chart-line"></i> 異常傾向の推移（週単位）</h2>
+            <select class="chart-filter">
+              <option>過去7週</option>
+              <option>過去30日</option>
+              <option>過去90日</option>
+            </select>
+          </div>
+          <canvas id="trendChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

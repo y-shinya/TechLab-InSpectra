@@ -1,0 +1,11 @@
+{
+  "id":"CAR001",
+  "name":"Prius",
+  "score":42,
+  "parts":{"engine":"error","battery":"normal","tire":"warning","brake":"normal","aircon":"normal"}
+}
+
+
+
+
+

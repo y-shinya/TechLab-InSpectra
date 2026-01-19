@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>異常詳細 - 自動車状態監視サービス</title>
+  <link rel="stylesheet" href="css/user-page.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .user-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .user-header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .logout-btn {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+<body class="user-page">
+  <header class="user-header">
+    <h1>異常詳細</h1>
+    <button class="logout-btn" onclick="window.location.href='user-home.html'">ホームに戻る</button>
+  </header>
+
+  <div class="container">
+    <!-- 異常概要カード -->
+    <div class="table-container">
+      <h2>異常概要</h2>
+      <div id="alertDetailsContainer" style="margin-top: 1rem;">
+        <!-- JavaScriptで動的に生成 -->
+      </div>
+    </div>
+
+    <!-- AI診断コメント -->
+    <div class="table-container">
+      <h2>AI診断コメント</h2>
+      <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+        <p id="aiComment" style="line-height: 1.8; color: #333;">-</p>
+      </div>
+    </div>
+
+    <!-- 推奨アクション -->
+    <div class="table-container">
+      <h2>推奨アクション</h2>
+      <div id="recommendationContainer" style="margin-top: 1rem;">
+        <!-- JavaScriptで動的に生成 -->
+      </div>
+      <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <button class="btn btn-primary" onclick="bookNearbyWorkshop()">近隣工場を予約</button>
+        <button class="btn btn-secondary" onclick="viewMaintenanceHistory()">整備記録を確認</button>
+      </div>
+    </div>
+
+    <!-- 過去比較グラフ -->
+    <div class="table-container">
+      <h2>同部品のリスク推移</h2>
+      <canvas id="historyChart"></canvas>
+    </div>
+
+    <!-- 戻るボタン -->
+    <div style="text-align: center; margin-top: 2rem;">
+      <button class="btn btn-secondary" onclick="window.location.href='user-home.html'">ホームに戻る</button>
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/user-alert.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,23 @@
+{
+  "customerId":"CUST001",
+  "customerName":"山田 太郎",
+  "vehicleId":"CAR001",
+  "vehicleName":"Prius",
+  "distance":42000,
+  "lastCheck":"2025-10-30",
+  "status":"warning",
+  "risk":75,
+  "parts":{
+    "engine":{"status":"normal","level":"良好","detail":"エンジン状態は良好です","severity":0},
+    "brake":{"status":"warning","level":"中度","detail":"ブレーキパッド磨耗65%。交換推奨期限あと500km","severity":2},
+    "battery":{"status":"error","level":"重度","detail":"バッテリー電圧が低下。即座の交換が必要です","severity":3},
+    "tire":{"status":"normal","level":"良好","detail":"タイヤ溝は十分です","severity":0},
+    "aircon":{"status":"normal","level":"良好","detail":"エアコン機能は正常です","severity":0}
+  },
+  "riskHistory":[40,45,50,55,65,70,75],
+  "maintenance":[
+    {"date":"2025-09-01","task":"オイル交換","status":"完了"},
+    {"date":"2025-10-10","task":"ブレーキ点検","status":"要再検"},
+    {"date":"2025-10-30","task":"バッテリー診断","status":"要対応"}
+  ]
+}

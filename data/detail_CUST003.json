@@ -1,0 +1,22 @@
+{
+  "customerId":"CUST003",
+  "customerName":"鈴木 一郎",
+  "vehicleId":"CAR003",
+  "vehicleName":"Model 3",
+  "distance":55000,
+  "lastCheck":"2025-10-25",
+  "status":"error",
+  "risk":85,
+  "parts":{
+    "engine":{"status":"error","level":"重度","detail":"エンジン異音を検知。整備工場での診断が必須です","severity":3},
+    "brake":{"status":"warning","level":"中度","detail":"ブレーキ制動距離が増加。パッド磨耗70%","severity":2},
+    "battery":{"status":"error","level":"重度","detail":"バッテリー電圧低下。充電機能が低下しています","severity":3},
+    "tire":{"status":"warning","level":"中度","detail":"タイヤ溝5mm。近い内に交換が必要です","severity":2},
+    "aircon":{"status":"normal","level":"良好","detail":"エアコン機能は正常です","severity":0}
+  },
+  "riskHistory":[60,65,70,75,80,82,85],
+  "maintenance":[
+    {"date":"2025-08-20","task":"エンジン点検","status":"要再検"},
+    {"date":"2025-10-25","task":"緊急診断","status":"要対応"}
+  ]
+}

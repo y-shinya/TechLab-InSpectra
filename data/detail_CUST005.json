@@ -1,0 +1,22 @@
+{
+  "customerId":"CUST005",
+  "customerName":"伊藤 健太",
+  "vehicleId":"CAR005",
+  "vehicleName":"Fit",
+  "distance":38000,
+  "lastCheck":"2025-10-27",
+  "status":"warning",
+  "risk":60,
+  "parts":{
+    "engine":{"status":"normal","level":"良好","detail":"エンジン状態は良好です","severity":0},
+    "brake":{"status":"warning","level":"中度","detail":"ブレーキパッド磨耗60%。交換推奨期限あと800km","severity":2},
+    "battery":{"status":"normal","level":"良好","detail":"バッテリー性能は最適です","severity":0},
+    "tire":{"status":"warning","level":"中度","detail":"タイヤ溝6mm。交換時期が近づいています","severity":2},
+    "aircon":{"status":"normal","level":"良好","detail":"エアコン機能は正常です","severity":0}
+  },
+  "riskHistory":[45,50,55,58,60,60,60],
+  "maintenance":[
+    {"date":"2025-09-10","task":"ブレーキ点検","status":"要再検"},
+    {"date":"2025-10-27","task":"タイヤ点検","status":"要対応"}
+  ]
+}

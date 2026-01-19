@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>車両詳細 - InSpectra</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- サイドバー -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <i class="fas fa-car-crash"></i>
+        <span>InSpectra</span>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html" class="nav-link"><i class="fas fa-chart-line"></i><span>ダッシュボード</span></a></li>
+        <li><a href="#" class="nav-link active"><i class="fas fa-list"></i><span>整備リスト</span></a></li>
+        <li><a href="#" class="nav-link"><i class="fas fa-bell"></i><span>アラート</span></a></li>
+        <li><a href="#" class="nav-link"><i class="fas fa-cog"></i><span>設定</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="#" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>ログアウト</span></a>
+    </div>
+  </aside>
+
+  <!-- メインコンテンツ -->
+  <div class="main-wrapper">
+    <!-- ヘッダー -->
+    <header class="header">
+      <div class="header-left">
+        <button class="sidebar-toggle-mobile" id="sidebarToggleMobile">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="breadcrumb">
+          <span><i class="fas fa-home"></i> ホーム</span>
+          <span class="separator">/</span>
+          <span>整備リスト</span>
+          <span class="separator">/</span>
+          <span>車両詳細</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="検索...">
+        </div>
+
+        <div class="notification-bell">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge" id="notificationCount">3</span>
+        </div>
+
+        <div class="user-profile">
+          <img src="img/admin.png" alt="User">
+          <div class="profile-info">
+            <span class="profile-name">管理者</span>
+            <span class="profile-role">システム管理者</span>
+          </div>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- ページタイトル -->
+      <div class="page-header">
+        <h1>車両詳細情報</h1>
+        <div class="page-actions">
+          <button class="btn btn-secondary" onclick="window.location.href='index.html'"><i class="fas fa-arrow-left"></i> 戻る</button>
+        </div>
+      </div>
+
+      <!-- 車両情報パネル -->
+      <div class="table-container">
+        <div class="table-header">
+          <h2><i class="fas fa-info-circle"></i> 車両情報</h2>
+        </div>
+        <div class="vehicle-info-grid">
+          <div class="info-item">
+            <label>顧客ID</label>
+            <span id="customerId">-</span>
+          </div>
+          <div class="info-item">
+            <label>顧客氏名</label>
+            <span id="customerName">-</span>
+          </div>
+          <div class="info-item">
+            <label>車種名</label>
+            <span id="vehicleName">-</span>
+          </div>
+          <div class="info-item">
+            <label>車両ID</label>
+            <span id="vehicleId">-</span>
+          </div>
+          <div class="info-item">
+            <label>走行距離</label>
+            <span id="vehicleDistance">-</span>
+          </div>
+          <div class="info-item">
+            <label>最終検査日</label>
+            <span id="lastCheck">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 各部品の状態 -->
+      <div class="table-container">
+        <div class="table-header">
+          <h2><i class="fas fa-cogs"></i> 各部品の状態</h2>
+        </div>
+        <div class="parts-grid" id="partsGrid">
+        </div>
+      </div>
+
+      <!-- 整備履歴リスト -->
+      <div class="table-container">
+        <div class="table-header">
+          <h2><i class="fas fa-history"></i> 整備履歴</h2>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>日付 <i class="fas fa-sort"></i></th>
+                <th>内容 <i class="fas fa-sort"></i></th>
+                <th>対応ステータス <i class="fas fa-sort"></i></th>
+              </tr>
+            </thead>
+            <tbody id="maintenanceTableBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- アクションボタン -->
+      <div class="detail-actions">
+        <button class="btn btn-secondary" onclick="reDiagnose()"><i class="fas fa-sync"></i> AI再診断</button>
+        <button class="btn btn-primary" onclick="window.location.href='index.html'"><i class="fas fa-arrow-left"></i> ダッシュボードに戻る</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/detail.js"></script>
+</body>
+</html>

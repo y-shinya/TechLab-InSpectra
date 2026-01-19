@@ -1,0 +1,22 @@
+{
+  "customerId":"CUST004",
+  "customerName":"田中 花子",
+  "vehicleId":"CAR004",
+  "vehicleName":"Model X",
+  "distance":72000,
+  "lastCheck":"2025-11-10",
+  "status":"warning",
+  "risk":70,
+  "parts":{
+    "engine":{"status":"warning","level":"中度","detail":"エンジン振動が増加。点検を推奨します","severity":2},
+    "brake":{"status":"normal","level":"良好","detail":"ブレーキシステムは正常です","severity":0},
+    "battery":{"status":"warning","level":"中度","detail":"バッテリー電圧がやや低め。交換推奨期限あと1000km","severity":2},
+    "tire":{"status":"warning","level":"中度","detail":"タイヤ溝7mm。数か月内に交換を検討してください","severity":2},
+    "aircon":{"status":"normal","level":"良好","detail":"エアコン機能は正常です","severity":0}
+  },
+  "riskHistory":[55,58,60,63,65,68,70],
+  "maintenance":[
+    {"date":"2025-09-15","task":"バッテリー交換","status":"完了"},
+    {"date":"2025-11-10","task":"タイヤ点検","status":"要注意"}
+  ]
+}

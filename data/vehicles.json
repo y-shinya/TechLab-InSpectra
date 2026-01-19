@@ -1,0 +1,8 @@
+[
+  {"customerId":"CUST001","customerName":"山田 太郎","vehicleId":"CAR001","name":"Prius","status":"warning","risk":75,"lat":35.6,"lng":139.7,"lastCheck":"2025-10-30"},
+  {"customerId":"CUST002","customerName":"佐藤 花子","vehicleId":"CAR002","name":"Leaf","status":"normal","risk":20,"lat":35.65,"lng":139.75,"lastCheck":"2025-10-28"},
+  {"customerId":"CUST003","customerName":"鈴木 一郎","vehicleId":"CAR003","name":"Model 3","status":"error","risk":85,"lat":35.7,"lng":139.8,"lastCheck":"2025-10-25"},
+  {"customerId":"CUST004","customerName":"田中 美咲","vehicleId":"CAR004","name":"Aqua","status":"normal","risk":15,"lat":35.55,"lng":139.6,"lastCheck":"2025-10-29"},
+  {"customerId":"CUST005","customerName":"伊藤 健太","vehicleId":"CAR005","name":"Fit","status":"warning","risk":60,"lat":35.65,"lng":139.65,"lastCheck":"2025-10-27"}
+]
+

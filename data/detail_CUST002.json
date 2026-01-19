@@ -1,0 +1,22 @@
+{
+  "customerId":"CUST002",
+  "customerName":"佐藤 花子",
+  "vehicleId":"CAR002",
+  "vehicleName":"Leaf",
+  "distance":28000,
+  "lastCheck":"2025-10-28",
+  "status":"normal",
+  "risk":20,
+  "parts":{
+    "engine":{"status":"normal","level":"良好","detail":"エンジン状態は良好です","severity":0},
+    "brake":{"status":"normal","level":"良好","detail":"ブレーキシステムは正常です","severity":0},
+    "battery":{"status":"normal","level":"良好","detail":"バッテリー性能は最適です","severity":0},
+    "tire":{"status":"normal","level":"良好","detail":"タイヤ溝は十分です","severity":0},
+    "aircon":{"status":"normal","level":"良好","detail":"エアコン機能は正常です","severity":0}
+  },
+  "riskHistory":[15,18,20,20,20,20,20],
+  "maintenance":[
+    {"date":"2025-09-15","task":"定期点検","status":"完了"},
+    {"date":"2025-10-28","task":"バッテリー点検","status":"完了"}
+  ]
+}
